@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>My first canvas</title>
+	<style>
+		html{
+			font-size:30px;
+		}
+		body{
+			font-size:1rem;
+		}
+	</style>
+</head>
+<body>
+
+<div id="">
+	<a href="#" id="clear">Clear</a>
+</div>
+
+<canvas width="500" height="500" id="myCanvas">
+
+</canvas>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	var canvas = $('#myCanvas');
+	var context = canvas.get(0).getContext('2d');
+	
+	// Stroke Rectangle 
+	context.strokeStyle = 'blue';
+	context.strokeRect(0, 0, 500, 500);
+	
+	// Rectangle
+	context.fillStyle = 'gray';
+	context.fillRect(5, 5, 30, 30);
+
+	// Line 
+	context.beginPath();
+	context.strokeStyle = 'green';
+	context.moveTo(0, 60);
+	context.lineTo(500, 60);
+	context.closePath();	
+	context.stroke();
+	
+	// Circle
+
+	context.beginPath();
+	context.fillStyle = 'red';
+	context.arc(250, 250, 120, 0, Math.PI*2, false);
+	context.closePath();
+	context.fill(); // could use stroke();
+	
+	
+	// Text
+	
+	var text = "Hello World";
+	context.font = '40px Trebuchet MS';
+	context.strokeStyle = 'black';
+//	context.fillStyle = 'black';
+	context.strokeText(text, 140, 40);
+	//context.fillText(text, 140, 40);
+	
+
+	//Calculate radians from degrees	
+	var degrees = 360;
+	var radians = degrees * (Math.PI / 180);
+	console.log(radians);
+
+	$("#clear").on("click", function(event){
+		context.clearRect(0,0, canvas.width(), canvas.height());
+	});
+</script>
+
+</body>
+</html>
